@@ -1,0 +1,23 @@
+<h1>Add Aisle</h1>
+
+<form>
+	Name: <input type="text" ng-model="aisle.name">
+	<input type="submit" value="Add Aisle" ng-click="addAisle()">
+</form>
+
+
+
+
+<h1>Add Item</h1>
+
+<form>
+	Name: <input type="text" ng-model="item.name">
+	Price: <input type="number" step="0.01" ng-model="item.price">
+	Pic: <input type="text" ng-model="item.pic">
+	Unit: <input type="text" ng-model="item.unit">
+	<!-- {{itemAisles}} -->
+	Aisle: <select ng-model="item.aisle" ng-options="a.name for a in itemAisles">
+		<option ng-repeat="a in itemAisles track by $index">{{a.name}}</option>
+	</select>
+	<input type="submit" value="Add Item" ng-click="addItem()">
+</form>

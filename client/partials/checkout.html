@@ -1,0 +1,56 @@
+<div ng-include="'../includes/checkoutNavbar.htm'"></div>
+
+<div id="checkoutContent">
+
+<div ng-if="!show_edit">
+<h3>Review Your Order</h3>
+<table class="table" id="checkoutTable">
+	<thead>
+		<tr><th>Item</th><th>Qty</th><th>Cost</th></tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="o in orders">
+		<td>{{o.name}}</td>
+		<td>{{o.amount}}</td>
+		<td>${{o.tot}}</td>
+		</tr>
+		<tr><td></td><td><b>Order Total</b></td><td>${{total}}</td></tr>
+	</tbody>
+</table>
+
+</div>
+<div ng-if="show_edit">
+<h3>Edit Your Order</h3>
+<table class="table" id="checkoutTable2">
+	<thead>
+		<tr><th>Item</th><th>Cost/Unit</th><th ng-if="show_edit">Qty</th></tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="o in orders">
+		<td>{{o.name}}</td>
+		<td>${{o.price}}</td>
+		<td ng-if="show_edit">
+			<form>
+			<input type="number" ng-model="o.amount" min="0">
+			<button ng-click="update_amount(o.id, o.amount, o.price)">Update</button>
+			</form>
+		</td>
+		<td ng-if="show_edit">
+			
+		</td>
+		</tr>
+	</tbody>
+</table>
+</div>
+
+<div class="buttonHolder">
+<div ng-if="show_edit">
+	<button ng-click="backToCheckout()" class="checkoutButton">Back to Checkout</button>
+</div>
+
+<div ng-if="!show_edit">
+	<button ng-click="edit()" class="checkoutButton">Edit Cart</button><button ng-click="purchase()" class="checkoutButton">Purchase</button>
+</div>
+</div>
+  
+</div>

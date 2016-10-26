@@ -1,0 +1,26 @@
+<h1>Update Store</h1>
+
+<div>
+<form>
+<p>Aisle Name <input type="text" ng-model="findAisle.name"></p>
+<p><input type="submit" ng-click="getAisleUpdate()" value="Search"></p>
+</form>
+</div>
+<p></p>
+<!-- {{aisle}} -->
+
+<div>
+<form>
+<div ng-repeat="a in aisle._items">
+
+<input type="hidden" ng-model="a._id">
+<p>Name <input type="text" ng-model="a.name"></p>
+<p>price $<input type="number" step="0.01" ng-model="a.price"></p>
+<p>img <input type="text" ng-model="a.img"></p>
+<p>unit <input type="text" ng-model="a.unit"></p>
+
+<p><input type="submit" ng-click="updateItem(a._id, a.name, a.price, a.img, a.unit)" value="Update Item"></p>
+</div>
+
+</form>
+</div>
